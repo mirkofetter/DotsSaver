@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		034D858C1B64DF4D00D2EF6B /* ConfigureSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 034D858B1B64DF4D00D2EF6B /* ConfigureSheet.xib */; };
-		034D85901B64F0AD00D2EF6B /* ConfigureSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D858F1B64F0AD00D2EF6B /* ConfigureSheetController.swift */; };
-		038330F71B6564C50015B15F /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038330F61B6564C50015B15F /* DefaultsManager.swift */; };
-		03A485271B644187008A2D6A /* DotsSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A485261B644187008A2D6A /* DotsSaverView.swift */; };
 		03F9545E1B695E0A00E47ED7 /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F9545D1B695E0A00E47ED7 /* thumbnail.png */; };
 		ACD891841DC38B790019C16F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD891831DC38B790019C16F /* AppDelegate.swift */; };
 		ACD891861DC38B790019C16F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACD891851DC38B790019C16F /* Assets.xcassets */; };
@@ -22,13 +19,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		034D858B1B64DF4D00D2EF6B /* ConfigureSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConfigureSheet.xib; path = ../DotsSaver/ConfigureSheet.xib; sourceTree = "<group>"; };
-		034D858F1B64F0AD00D2EF6B /* ConfigureSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigureSheetController.swift; path = ../DotsSaver/ConfigureSheetController.swift; sourceTree = "<group>"; };
-		038330F61B6564C50015B15F /* DefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefaultsManager.swift; path = ../DotsSaver/DefaultsManager.swift; sourceTree = "<group>"; };
+		034D858B1B64DF4D00D2EF6B /* ConfigureSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConfigureSheet.xib; path = DotsSaver/ConfigureSheet.xib; sourceTree = SOURCE_ROOT; };
+		034D858F1B64F0AD00D2EF6B /* ConfigureSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigureSheetController.swift; path = DotsSaver/ConfigureSheetController.swift; sourceTree = SOURCE_ROOT; };
+		038330F61B6564C50015B15F /* DefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefaultsManager.swift; path = DotsSaver/DefaultsManager.swift; sourceTree = SOURCE_ROOT; };
 		03A485181B644145008A2D6A /* DotsSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DotsSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
-		03A4851C1B644145008A2D6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../DotsSaver/Info.plist; sourceTree = "<group>"; };
-		03A485261B644187008A2D6A /* DotsSaverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DotsSaverView.swift; path = ../DotsSaver/DotsSaverView.swift; sourceTree = "<group>"; };
-		03F9545D1B695E0A00E47ED7 /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thumbnail.png; path = ../DotsSaver/thumbnail.png; sourceTree = "<group>"; };
+		03A4851C1B644145008A2D6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = DotsSaver/Info.plist; sourceTree = SOURCE_ROOT; };
+		03A485261B644187008A2D6A /* DotsSaverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DotsSaverView.swift; path = DotsSaver/DotsSaverView.swift; sourceTree = SOURCE_ROOT; };
+		03F9545D1B695E0A00E47ED7 /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thumbnail.png; path = DotsSaver/thumbnail.png; sourceTree = SOURCE_ROOT; };
 		ACD891811DC38B790019C16F /* SaverTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaverTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD891831DC38B790019C16F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACD891851DC38B790019C16F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -166,6 +163,7 @@
 					03A485171B644145008A2D6A = {
 						CreatedOnToolsVersion = 6.2;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					ACD891801DC38B790019C16F = {
 						CreatedOnToolsVersion = 8.0;
@@ -218,9 +216,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03A485271B644187008A2D6A /* DotsSaverView.swift in Sources */,
-				038330F71B6564C50015B15F /* DefaultsManager.swift in Sources */,
-				034D85901B64F0AD00D2EF6B /* ConfigureSheetController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,11 +332,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = ScreenSaverMinimal/Info.plist;
+				DEVELOPMENT_TEAM = J649878CHW;
+				INFOPLIST_FILE = "$(SRCROOT)/DotsSaver/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.mirkofetter.ScreenSaverMinimal;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = net.mirkofetter.DotsSaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -354,11 +352,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = ScreenSaverMinimal/Info.plist;
+				DEVELOPMENT_TEAM = J649878CHW;
+				INFOPLIST_FILE = "$(SRCROOT)/DotsSaver/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.mirkofetter.ScreenSaverMinimal;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = net.mirkofetter.DotsSaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;

@@ -23,8 +23,8 @@ class DotsSaverView : ScreenSaverView {
     
     override init(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)!
-        let stepsW = frame.width/20
-        let stepsH = frame.height/20
+        var stepsW = frame.width/20
+        var stepsH = frame.height/20
         canvasColor = defaultsManager.canvasColor
 
     }
