@@ -17,15 +17,24 @@ class DotsSaverView : ScreenSaverView {
     
     var canvasColor : NSColor?
      var circleColor = NSColor.red
-    var circleSize: Float = 100
+    var circleSize: Float = 50.0
     var amplitude: Float = 0.5
-     var frameCount = 0
+    var myArray = Array<Array<CircleSpec>>()
+    
+    var stepsW : CGFloat?
+    var stepsH : CGFloat?
+
     
     override init(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)!
-        var stepsW = frame.width/20
-        var stepsH = frame.height/20
+        animationTimeInterval = 1.0 / 60.0
+         stepsW = frame.size.width/20
+         stepsH = bounds.height/20
         canvasColor = defaultsManager.canvasColor
+        amplitude = circleSize * amplitude * 0.75
+        initArray();
+        debugPrint("::: \(frame)")
+        
 
     }
     
@@ -57,23 +66,57 @@ class DotsSaverView : ScreenSaverView {
         let bPath:NSBezierPath = NSBezierPath(rect: bounds)
         defaultsManager.canvasColor.set()
         bPath.fill()
+        
+        for i in 0...myArray.count-1
+        {
+            for j in 0...myArray[i].count-1
+            {
+                drawCircle(spec: myArray[i][j])
+                (myArray[i][j]).framecount += 1
+            }
+        }
 
      }
     
     override func animateOneFrame() {
-        window!.disableFlushing()
-        drawCircle(color: canvasColor!, diameter: CGFloat(circleSize+amplitude))
-        let r = CGFloat(sin(Float(frameCount) / 40) * amplitude + circleSize)
-        drawCircle(color: circleColor, diameter: r)
-        frameCount += 1
-        window!.enableFlushing()
+        needsDisplay = true
+        
     }
     
-    func drawCircle(color: NSColor, diameter: CGFloat) {
-        var circleRect = NSMakeRect(bounds.size.width/2 - diameter/2, bounds.size.height/2 - diameter/2, diameter, diameter)
+    func drawCircle(spec: CircleSpec) {
+        let diameter = CGFloat(sin(Float(spec.framecount) / 40) * amplitude + circleSize)
+     
+        let circleRect = NSMakeRect(CGFloat(spec.x * 100)-diameter/2, CGFloat(spec.y * 100)-diameter/2, diameter, diameter)
         let cPath: NSBezierPath = NSBezierPath(ovalIn: circleRect)
-        color.set()
+        spec.circleColor.set()
         cPath.fill()
+    }
+    
+    func initArray(){
+        let NumColumns = 16
+        let NumRows = 10
+        debugPrint(frame.width)
+
+
+        for column in 0...NumColumns {
+
+            var columnArray = Array<CircleSpec>()
+            for row in 0...NumRows {
+                columnArray.append(CircleSpec(circleColor: NSColor.blue, framecount: Int(arc4random_uniform(40)),x:column,y:row))
+
+            }
+            myArray.append(columnArray)
+        }
+        
+    }
+    
+    
+    struct CircleSpec {
+
+        var circleColor = NSColor.black
+        var framecount = 0
+        var x  = 0
+        var y  = 0
     }
     
 }

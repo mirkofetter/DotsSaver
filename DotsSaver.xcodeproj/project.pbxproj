@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		034D858C1B64DF4D00D2EF6B /* ConfigureSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 034D858B1B64DF4D00D2EF6B /* ConfigureSheet.xib */; };
 		03F9545E1B695E0A00E47ED7 /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F9545D1B695E0A00E47ED7 /* thumbnail.png */; };
+		AC7CE0B51DCCCB6700D919C0 /* DotsSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A485261B644187008A2D6A /* DotsSaverView.swift */; };
+		AC7CE0B61DCCCB6700D919C0 /* ConfigureSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D858F1B64F0AD00D2EF6B /* ConfigureSheetController.swift */; };
+		AC7CE0B71DCCCB6700D919C0 /* ConfigureSheet.xib in Sources */ = {isa = PBXBuildFile; fileRef = 034D858B1B64DF4D00D2EF6B /* ConfigureSheet.xib */; };
+		AC7CE0B81DCCCB6700D919C0 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038330F61B6564C50015B15F /* DefaultsManager.swift */; };
 		ACD891841DC38B790019C16F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD891831DC38B790019C16F /* AppDelegate.swift */; };
 		ACD891861DC38B790019C16F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACD891851DC38B790019C16F /* Assets.xcassets */; };
 		ACD891891DC38B790019C16F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD891871DC38B790019C16F /* MainMenu.xib */; };
@@ -216,6 +220,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC7CE0B51DCCCB6700D919C0 /* DotsSaverView.swift in Sources */,
+				AC7CE0B61DCCCB6700D919C0 /* ConfigureSheetController.swift in Sources */,
+				AC7CE0B71DCCCB6700D919C0 /* ConfigureSheet.xib in Sources */,
+				AC7CE0B81DCCCB6700D919C0 /* DefaultsManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,7 +346,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/DotsSaver/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = net.mirkofetter.DotsSaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -358,7 +366,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/DotsSaver/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = net.mirkofetter.DotsSaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

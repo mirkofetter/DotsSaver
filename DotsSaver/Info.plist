@@ -23,6 +23,6 @@
 	<key>NSHumanReadableCopyright</key>
 	<string></string>
 	<key>NSPrincipalClass</key>
-	<string>DotsSaverView</string>
+	<string>DotSaverView</string>
 </dict>
 </plist>

@@ -16,15 +16,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     lazy var screenSaverView = DotsSaverView(frame: NSZeroRect, isPreview: false)
     lazy var sheetController: ConfigureSheetController = ConfigureSheetController()
-
+    
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         screenSaverView.frame = (window.contentView?.bounds)!;
         window.contentView?.addSubview(screenSaverView);
         
-        NSApp.beginSheet(sheetController.window!, modalFor: window, modalDelegate: self, didEnd: nil, contextInfo: nil)
-        print("yeah")
+        Timer.scheduledTimer(timeInterval: screenSaverView.animationTimeInterval, target: screenSaverView, selector:  #selector(screenSaverView.animateOneFrame), userInfo: nil, repeats: true)
         
+        
+        NSApplication.shared().runModal(for: sheetController.window!)
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
