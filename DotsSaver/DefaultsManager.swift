@@ -9,6 +9,7 @@
 
 
 import ScreenSaver
+import RandomColorSwift
 
 
 class DefaultsManager {
@@ -17,6 +18,8 @@ class DefaultsManager {
     
     
     //.monochrome, .red, .orange, .yellow, .green, .blue, .purple, .pink
+    
+    
     
     init() {
         let identifier = Bundle(for: DefaultsManager.self).bundleIdentifier
@@ -29,6 +32,21 @@ class DefaultsManager {
         }
         get {
             return getColor("CanvasColor") ?? NSColor(red: 1, green: 0.0, blue: 0.5, alpha: 1.0)
+        }
+    }
+    
+    
+    var hue: Hue {
+        set(newHue) {
+            let hueValue:Int = newHue.toInt()
+            debugPrint(hueValue)
+            defaults.set(hueValue, forKey: "Hue")
+        }
+       get {
+            let v = defaults.integer(forKey: "Hue")
+            debugPrint(v)
+        
+            return  Hue.red
         }
     }
     
@@ -54,6 +72,18 @@ class DefaultsManager {
         }
         return nil;
     }
+    
+    
+    let hueValues = [  Hue.monochrome:"Monochrome",
+                       Hue.red:"Red",
+                       Hue.orange:"Orange",
+                       Hue.yellow:"Yellow",
+                       Hue.green:"Green",
+                       Hue.blue:"Blue",
+                       Hue.purple:"Purple",
+                       Hue.pink:"Pink",
+                       Hue.random:"Random"]
+    
 
-        
+    
 }

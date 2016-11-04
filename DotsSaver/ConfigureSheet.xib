@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ConfigureSheetController" customModule="DotsSaver" customModuleProvider="target">
             <connections>
+                <outlet property="HuePopUp" destination="GdB-Gs-LtY" id="bdp-75-zPC"/>
                 <outlet property="canvasColorWell" destination="gt4-XW-IhQ" id="Qkh-Dd-Ph3"/>
                 <outlet property="numOfColorSlider" destination="0sa-nV-sdx" id="WVL-L1-IKv"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="t14-la-H7W"/>
@@ -101,11 +102,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <sliderCell key="cell" state="on" alignment="left" minValue="2" maxValue="100" doubleValue="20" tickMarkPosition="above" sliderType="linear" id="hPw-Iw-o3V"/>
                     </slider>
-                    <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lsB-4d-KwF">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lsB-4d-KwF">
                         <rect key="frame" x="169" y="13" width="92" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="80" id="bI1-BY-gUk"/>
-                        </constraints>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ygf-Qk-bkW">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
