@@ -72,6 +72,9 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="updateDefaults:" target="-2" id="bPe-1c-muS"/>
+                        </connections>
                     </popUpButton>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GCk-aL-luT">
                         <rect key="frame" x="18" y="194" width="133" height="20"/>
