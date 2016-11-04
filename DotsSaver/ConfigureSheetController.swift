@@ -1,6 +1,6 @@
 //
 //  ConfigureSheetController.swift
-//  ScreenSaverMinimal
+//
 //
 //  Created by Mirko Fetter on 28.10.16.
 //
@@ -15,6 +15,8 @@ class ConfigureSheetController : NSObject {
 
     @IBOutlet var window: NSWindow?
     @IBOutlet var canvasColorWell: NSColorWell?
+    
+    @IBOutlet weak var numOfColorSlider: NSSlider!
 
 
     override init() {
@@ -22,10 +24,14 @@ class ConfigureSheetController : NSObject {
         let myBundle = Bundle(for: ConfigureSheetController.self)
         myBundle.loadNibNamed("ConfigureSheet", owner: self, topLevelObjects: nil)
         canvasColorWell!.color = defaultsManager.canvasColor
+        numOfColorSlider!.intValue = Int32(defaultsManager.numOfColor)
+
     }
 
     @IBAction func updateDefaults(_ sender: AnyObject) {
         defaultsManager.canvasColor = canvasColorWell!.color
+        defaultsManager.numOfColor = Int(numOfColorSlider!.intValue)
+
     }
    
     @IBAction func closeConfigureSheet(_ sender: AnyObject) {
