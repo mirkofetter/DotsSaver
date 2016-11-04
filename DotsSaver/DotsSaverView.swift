@@ -8,6 +8,7 @@
 
 
 import ScreenSaver
+import RandomColorSwift
 
 class DotsSaverView : ScreenSaverView {
     
@@ -18,8 +19,14 @@ class DotsSaverView : ScreenSaverView {
     var canvasColor : NSColor?
      var circleColor = NSColor.red
     var circleSize: Float = 50.0
-    var amplitude: Float = 0.5
-    var myArray = Array<Array<CircleSpec>>()
+    var amplitude: Float = 0.9
+    var specArray = Array<Array<CircleSpec>>()
+    
+    var hue = Hue.pink
+    var luminosity = Luminosity.light
+    var numOfColors = 10;
+    
+    
     
     var stepsW : CGFloat?
     var stepsH : CGFloat?
@@ -32,7 +39,7 @@ class DotsSaverView : ScreenSaverView {
          stepsH = bounds.height/20
         canvasColor = defaultsManager.canvasColor
         amplitude = circleSize * amplitude * 0.75
-        initArray();
+        initArrays();
         debugPrint("::: \(frame)")
         
 
@@ -67,12 +74,12 @@ class DotsSaverView : ScreenSaverView {
         defaultsManager.canvasColor.set()
         bPath.fill()
         
-        for i in 0...myArray.count-1
+        for i in 0...specArray.count-1
         {
-            for j in 0...myArray[i].count-1
+            for j in 0...specArray[i].count-1
             {
-                drawCircle(spec: myArray[i][j])
-                (myArray[i][j]).framecount += 1
+                drawCircle(spec: specArray[i][j])
+                (specArray[i][j]).framecount += 1
             }
         }
 
@@ -86,26 +93,33 @@ class DotsSaverView : ScreenSaverView {
     func drawCircle(spec: CircleSpec) {
         let diameter = CGFloat(sin(Float(spec.framecount) / 40) * amplitude + circleSize)
      
+        
         let circleRect = NSMakeRect(CGFloat(spec.x * 100)-diameter/2, CGFloat(spec.y * 100)-diameter/2, diameter, diameter)
         let cPath: NSBezierPath = NSBezierPath(ovalIn: circleRect)
         spec.circleColor.set()
         cPath.fill()
     }
     
-    func initArray(){
+    func initArrays(){
+        
+        
+        
         let NumColumns = 16
         let NumRows = 10
-        debugPrint(frame.width)
 
+        // Init ColorArray
+
+        
+        // Init SpecArray
 
         for column in 0...NumColumns {
 
             var columnArray = Array<CircleSpec>()
             for row in 0...NumRows {
-                columnArray.append(CircleSpec(circleColor: NSColor.blue, framecount: Int(arc4random_uniform(40)),x:column,y:row))
+                columnArray.append(CircleSpec(circleColor: randomColor(hue: .blue, luminosity: .light), framecount: Int(arc4random_uniform(40)),x:column,y:row))
 
             }
-            myArray.append(columnArray)
+            specArray.append(columnArray)
         }
         
     }
