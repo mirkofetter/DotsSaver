@@ -21,6 +21,7 @@ class ConfigureSheetController : NSObject {
     
     @IBOutlet weak var huePopUp: NSPopUpButton!
     
+    @IBOutlet weak var luminosityPopUp: NSPopUpButton!
 
 
     override init() {

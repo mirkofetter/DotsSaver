@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="HuePopUp" destination="GdB-Gs-LtY" id="bdp-75-zPC"/>
                 <outlet property="canvasColorWell" destination="gt4-XW-IhQ" id="Qkh-Dd-Ph3"/>
+                <outlet property="luminosityPopUp" destination="H4M-sW-768" id="Icn-yZ-fiw"/>
                 <outlet property="numOfColorSlider" destination="0sa-nV-sdx" id="WVL-L1-IKv"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="t14-la-H7W"/>
             </connections>
@@ -99,11 +100,17 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="updateDefaults:" target="-2" id="NSV-K5-GK9"/>
+                        </connections>
                     </popUpButton>
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0sa-nV-sdx">
                         <rect key="frame" x="155" y="158" width="96" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <sliderCell key="cell" state="on" alignment="left" minValue="2" maxValue="100" doubleValue="20" tickMarkPosition="above" sliderType="linear" id="hPw-Iw-o3V"/>
+                        <connections>
+                            <action selector="updateDefaults:" target="-2" id="BeY-J1-Kpf"/>
+                        </connections>
                     </slider>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lsB-4d-KwF">
                         <rect key="frame" x="169" y="13" width="92" height="32"/>
