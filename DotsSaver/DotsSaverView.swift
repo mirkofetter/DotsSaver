@@ -19,13 +19,16 @@ class DotsSaverView : ScreenSaverView {
     var canvasColor : NSColor?
      var circleColor = NSColor.red
     var circleSize: Float = 50.0
-    var amplitude: Float = 0.9
+    var amplitude: Float = 1
+    var calcAmplitude: Float = 0.9
     var specArray = Array<Array<CircleSpec>>()
     var colorArray = Array<Color>()
     var hue = Hue.pink
     var luminosity = Luminosity.light
     var numOfColors = 10;
-    
+    var width: CGFloat?
+    var height: CGFloat?
+
     
     
     var stepsW : CGFloat?
@@ -34,8 +37,13 @@ class DotsSaverView : ScreenSaverView {
     
     override init(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)!
+        
+        
+        
         animationTimeInterval = 1.0 / 60.0
-        amplitude = circleSize * amplitude * 0.75
+        
+         width  = NSScreen.main()?.frame.width
+         height = NSScreen.main()?.frame.height
 
         cacheDefaults()
         initArrays();
@@ -100,10 +108,10 @@ class DotsSaverView : ScreenSaverView {
     }
     
     func drawCircle(spec: CircleSpec) {
-        let diameter = CGFloat(sin(Float(spec.framecount) / 40) * amplitude + circleSize)
+        let diameter = CGFloat(sin(Float(spec.framecount) / 40) * calcAmplitude + circleSize)
      
         
-        let circleRect = NSMakeRect(CGFloat(spec.x * 100)-diameter/2, CGFloat(spec.y * 100)-diameter/2, diameter, diameter)
+        let circleRect = NSMakeRect(CGFloat(spec.x * Int(circleSize*2))-diameter/2, CGFloat(spec.y * Int(circleSize*2))-diameter/2, diameter, diameter)
         let cPath: NSBezierPath = NSBezierPath(ovalIn: circleRect)
         spec.circleColor.set()
         cPath.fill()
@@ -111,8 +119,28 @@ class DotsSaverView : ScreenSaverView {
     
     func initArrays(){
         
-        let numColumns = 16
-        let numRows = 10
+        typealias ratioTuple = (CGFloat, CGFloat)
+        
+        var aspectRatios:[ratioTuple] = [   (10,4),(12,9),(12,8),(15,9),(16,9),(16,10),(17,9)]
+        var differences = [CGFloat]()
+        
+        aspectRatios.sort(by: { $0.0/$0.1 > $1.0/$1.1})
+        
+        for ratio in aspectRatios {
+            differences.append(abs((width!/height!) - (ratio.0/ratio.1)))
+        }
+        let min = differences.min()
+        let pos = differences.index(of: min!)
+        
+        
+        
+        let numColumns = Int(aspectRatios[pos!].0)
+        let numRows = Int(aspectRatios[pos!].1)
+        
+        circleSize = (Float(width!) / Float(numColumns))/2
+        calcAmplitude = circleSize * amplitude
+        debugPrint(circleSize)
+
         
         colorArray = randomColors(count: numOfColors, hue: hue, luminosity: luminosity)
         
@@ -137,6 +165,7 @@ class DotsSaverView : ScreenSaverView {
         var x  = 0
         var y  = 0
     }
+    
     
 }
     
