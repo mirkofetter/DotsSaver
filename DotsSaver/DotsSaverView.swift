@@ -19,7 +19,8 @@ class DotsSaverView : ScreenSaverView {
     var canvasColor : NSColor?
      var circleColor = NSColor.red
     var circleSize: Float = 50.0
-    var amplitude: Float = 1
+    var amplitude: Float = 0.9
+    var maxFrames = 30
     var calcAmplitude: Float = 0.9
     var specArray = Array<Array<CircleSpec>>()
     var colorArray = Array<Color>()
@@ -108,9 +109,8 @@ class DotsSaverView : ScreenSaverView {
     }
     
     func drawCircle(spec: CircleSpec) {
-        let diameter = CGFloat(sin(Float(spec.framecount) / 40) * calcAmplitude + circleSize)
-     
-        
+        let diameter = CGFloat(sin(Float(spec.framecount) / Float(maxFrames)) * calcAmplitude + circleSize)
+    
         let circleRect = NSMakeRect(CGFloat(spec.x * Int(circleSize*2))-diameter/2, CGFloat(spec.y * Int(circleSize*2))-diameter/2, diameter, diameter)
         let cPath: NSBezierPath = NSBezierPath(ovalIn: circleRect)
         spec.circleColor.set()
@@ -139,7 +139,6 @@ class DotsSaverView : ScreenSaverView {
         
         circleSize = (Float(width!) / Float(numColumns))/2
         calcAmplitude = circleSize * amplitude
-        debugPrint(circleSize)
 
         
         colorArray = randomColors(count: numOfColors, hue: hue, luminosity: luminosity)
@@ -150,7 +149,7 @@ class DotsSaverView : ScreenSaverView {
 
             var columnArray = Array<CircleSpec>()
             for row in 0...numRows {
-                columnArray.append(CircleSpec(circleColor: colorArray[Int(arc4random_uniform(UInt32(numOfColors)))], framecount: Int(arc4random_uniform(40)),x:column,y:row))
+                columnArray.append(CircleSpec(circleColor: colorArray[Int(arc4random_uniform(UInt32(numOfColors)))], framecount: Int(arc4random_uniform(UInt32(maxFrames))),x:column,y:row))
             }
             specArray.append(columnArray)
         }

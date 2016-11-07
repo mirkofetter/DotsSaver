@@ -19,7 +19,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+
         screenSaverView.frame = (window.contentView?.bounds)!;
+       // window.toggleFullScreen(self)
         window.contentView?.addSubview(screenSaverView);
         
         Timer.scheduledTimer(timeInterval: screenSaverView.animationTimeInterval, target: screenSaverView, selector:  #selector(screenSaverView.animateOneFrame), userInfo: nil, repeats: true)
