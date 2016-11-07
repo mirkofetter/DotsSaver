@@ -13,7 +13,7 @@ import RandomColorSwift
 class ConfigureSheetController : NSObject {
     
     var defaultsManager = DefaultsManager()
-
+    
     @IBOutlet var window: NSWindow?
     @IBOutlet var canvasColorWell: NSColorWell?
     
@@ -22,8 +22,8 @@ class ConfigureSheetController : NSObject {
     @IBOutlet weak var huePopUp: NSPopUpButton!
     
     @IBOutlet weak var luminosityPopUp: NSPopUpButton!
-
-
+    
+    
     override init() {
         super.init()
         let myBundle = Bundle(for: ConfigureSheetController.self)
@@ -33,28 +33,32 @@ class ConfigureSheetController : NSObject {
         
         canvasColorWell!.color = defaultsManager.canvasColor
         numOfColorSlider!.intValue = Int32(defaultsManager.numOfColor)
-    
+        
+        debugPrint(defaultsManager.hueValues[defaultsManager.hue]!)
         huePopUp.removeAllItems()
-        huePopUp.addItems(withTitles:  [String] (defaultsManager.hueValues.values))
-        huePopUp.selectItem(      withTitle:    defaultsManager.hueValues[defaultsManager.hue]!
-)
+        huePopUp.addItems(withTitles: [String] (defaultsManager.hueValues.values))
+        huePopUp.selectItem(withTitle: defaultsManager.hueValues[defaultsManager.hue]!)
+        
+        debugPrint(defaultsManager.luminosityValues[defaultsManager.luminosity]!)
+        luminosityPopUp.removeAllItems()
+        luminosityPopUp.addItems(withTitles: [String] (defaultsManager.luminosityValues.values))
+        luminosityPopUp.selectItem(withTitle: defaultsManager.luminosityValues[defaultsManager.luminosity]!)
         
         
-
     }
-
+    
     @IBAction func updateDefaults(_ sender: AnyObject) {
         defaultsManager.canvasColor = canvasColorWell!.color
         defaultsManager.numOfColor = Int(numOfColorSlider!.intValue)
         defaultsManager.hue = defaultsManager.hueValues.keysForValue(value: (huePopUp.selectedItem?.title)!)[0]
-
+        defaultsManager.luminosity = defaultsManager.luminosityValues.keysForValue(value: (luminosityPopUp.selectedItem?.title)!)[0]
     }
-   
+    
     @IBAction func closeConfigureSheet(_ sender: AnyObject) {
         NSColorPanel.shared().close()
         NSApp.endSheet(window!)
     }
-   
+    
     
 }
 
@@ -70,5 +74,5 @@ extension Dictionary where Value: Equatable {
         return flatMap { (key: Key, val: Value) -> Key? in
             value == val ? key : nil
         }
-    } 
+    }
 }

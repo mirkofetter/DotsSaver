@@ -39,20 +39,54 @@ class DefaultsManager {
     var hue: Hue {
         set(newHue) {
             let hueValue:Int = newHue.toInt()
-            debugPrint(hueValue)
             defaults.set(hueValue, forKey: "Hue")
         }
-       get {
+        get {
             let v = defaults.integer(forKey: "Hue")
-            debugPrint(v)
-        
-            return  Hue.red
+            switch v {
+            case Hue.monochrome.toInt():
+                return Hue.monochrome
+            case Hue.red.toInt():
+                return Hue.red
+            case Hue.orange.toInt():
+                return Hue.orange
+            case Hue.yellow.toInt():
+                return Hue.yellow
+            case Hue.green.toInt():
+                return Hue.green
+            case Hue.blue.toInt():
+                return Hue.blue
+            case Hue.purple.toInt():
+                return Hue.purple
+            case Hue.pink.toInt():
+                return Hue.pink
+            case Hue.random.toInt():
+                return Hue.random
+            default:
+                return Hue.random
+            }
+            
         }
     }
+    
+    
+    var luminosity: Luminosity {
+        set(newLuminosity) {
+            let luminosityValue:Int = newLuminosity.rawValue
+            defaults.set(luminosityValue, forKey: "Luminosity")
+                    }
+        get {
+            let v = defaults.integer(forKey: "Luminosity")
+            return Luminosity.init(rawValue: v)!
+        }
+    }
+    
+
     
     var numOfColor: Int {
         set(newNumOfColor) {
             defaults.set(newNumOfColor, forKey: "NumberOfColors")
+
         }
         get {
             let v = defaults.integer(forKey: "NumberOfColors")
@@ -60,12 +94,12 @@ class DefaultsManager {
         }
     }
     
-
+    
     func setColor(_ color: NSColor, key: String) {
         defaults.set(NSKeyedArchiver.archivedData(withRootObject: color), forKey: key)
         defaults.synchronize()
     }
-
+    
     func getColor(_ key: String) -> NSColor? {
         if let canvasColorData = defaults.object(forKey: key) as? Data {
             return NSKeyedUnarchiver.unarchiveObject(with: canvasColorData) as? NSColor
@@ -84,6 +118,14 @@ class DefaultsManager {
                        Hue.pink:"Pink",
                        Hue.random:"Random"]
     
-
+    
+    let luminosityValues = [  Luminosity.bright:"Bright",
+                       Luminosity.light:"Light",
+                       Luminosity.dark:"Dark",
+                       Luminosity.random:"Random"
+        
+    ]
+    
+    
     
 }

@@ -21,7 +21,7 @@ class DotsSaverView : ScreenSaverView {
     var circleSize: Float = 50.0
     var amplitude: Float = 0.9
     var specArray = Array<Array<CircleSpec>>()
-    
+    var colorArray = Array<Color>()
     var hue = Hue.pink
     var luminosity = Luminosity.light
     var numOfColors = 10;
@@ -35,16 +35,24 @@ class DotsSaverView : ScreenSaverView {
     override init(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)!
         animationTimeInterval = 1.0 / 60.0
-         stepsW = frame.size.width/20
-         stepsH = bounds.height/20
-        canvasColor = defaultsManager.canvasColor
         amplitude = circleSize * amplitude * 0.75
+
+        cacheDefaults()
         initArrays();
-        debugPrint("::: \(frame)")
-        
 
     }
     
+    func cacheDefaults(){
+        
+        canvasColor = defaultsManager.canvasColor
+        hue = defaultsManager.hue
+        luminosity = defaultsManager.luminosity
+        numOfColors = defaultsManager.numOfColor
+
+
+        
+
+    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -61,6 +69,7 @@ class DotsSaverView : ScreenSaverView {
     
     override func startAnimation() {
         super.startAnimation()
+        cacheDefaults()
       
     }
     
@@ -102,22 +111,18 @@ class DotsSaverView : ScreenSaverView {
     
     func initArrays(){
         
+        let numColumns = 16
+        let numRows = 10
         
-        
-        let NumColumns = 16
-        let NumRows = 10
-
-        // Init ColorArray
-
+        colorArray = randomColors(count: numOfColors, hue: hue, luminosity: luminosity)
         
         // Init SpecArray
 
-        for column in 0...NumColumns {
+        for column in 0...numColumns {
 
             var columnArray = Array<CircleSpec>()
-            for row in 0...NumRows {
-                columnArray.append(CircleSpec(circleColor: randomColor(hue: .blue, luminosity: .light), framecount: Int(arc4random_uniform(40)),x:column,y:row))
-
+            for row in 0...numRows {
+                columnArray.append(CircleSpec(circleColor: colorArray[Int(arc4random_uniform(UInt32(numOfColors)))], framecount: Int(arc4random_uniform(40)),x:column,y:row))
             }
             specArray.append(columnArray)
         }
